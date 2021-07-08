@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Image Uploader</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="py-5 text-center bg-secondary text-white">
+            <h2 class="mb-3">Upload IMAGE</h2>
+            <form action="" method="post" class="mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-primary" value="Upload">
+            </form>
+        </div>
+       <div class="row">
+        {% for im in imge %}
+          <div class="col-sm-3">
+              <div class="card m-2">
+                <img src="{{im.img.url}}" alt="" class="card-img-top" height="210px">
+                <div class="card-footer">
+                 <small class="text-muted">{{im.date}}</small>
+                </div>
+              </div>
+          </div>
+        {% endfor %}
+       </div>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  </body>
+</html>
